@@ -4,7 +4,7 @@ import TodoItem from "../todo-item/todo-item";
 import Tooltip from "../../../components/tooltip/tooltip";
 import NewItem from "../new-item/new-item";
 import "./weekly.css";
-import NewHabit from "../../new-habit/new-habit";
+import NewHabit from "../new-habit/new-habit";
 import HabitItem from "../habit-item/habit-item";
 
 function Weekly() {
