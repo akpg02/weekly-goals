@@ -1,0 +1,16 @@
+.goal-item,
+.todo-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.4rem;
+  font-weight: 300;
+  letter-spacing: 0.1rem;
+}
+
+.goal-item input {
+  background-color: #fff;
+}
+
+.goal-desc.completed {
+  text-decoration: line-through;
+}

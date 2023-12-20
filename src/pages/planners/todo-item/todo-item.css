@@ -1,0 +1,8 @@
+.todo-list-group ul li:not(:last-child) {
+  border-bottom: 1px solid #ccc;
+  margin: 0.5rem 0;
+}
+
+.todo-desc.completed {
+  text-decoration: line-through;
+}
