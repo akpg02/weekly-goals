@@ -10,7 +10,6 @@ function NewHabit({
   edit = false,
   submit,
 }) {
-  console.log("this is edit item in new habit: ", edit);
   return (
     <>
       <td>
