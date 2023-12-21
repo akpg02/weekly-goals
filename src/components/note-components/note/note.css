@@ -1,0 +1,39 @@
+/* Daily Goals */
+.goals-area {
+  border: 0.1rem solid #ccc;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  padding: 1rem;
+}
+
+.day-goals .title {
+  background-color: rgba(191, 213, 240, 0.4);
+  padding: 1.05rem 1.2rem;
+  color: #671616;
+  font-weight: 400;
+}
+
+.day-goals textarea,
+.day-goals .note-body {
+  resize: none;
+  white-space: pre-wrap;
+  font-size: 1.5rem;
+  letter-spacing: 0.1rem;
+  border: none;
+  padding: 0.75rem 1.25rem;
+  width: 100%;
+  min-height: 15rem;
+  overflow-y: scroll;
+}
+
+.day-goals-footer {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.day-goals-footer span.remove {
+  color: #ad0707;
+  cursor: pointer;
+}
+/* End of Daily Goals */

@@ -211,14 +211,13 @@ td.habit-totals {
 /* End of Tracker table*/
 
 /* Daily Goals */
-.daily-goals-section {
+/*.daily-goals-section {
   display: grid;
-  /*Define our columns */
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   grid-gap: 1em;
-}
+}*/
 
-.day-goals .title {
+/*.day-goals .title {
   background-color: rgba(191, 213, 240, 0.4);
   padding: 1.05rem 1.2rem;
   color: #671616;
@@ -229,9 +228,8 @@ td.habit-totals {
   resize: none;
   font-size: 1.5rem;
   letter-spacing: 0.1rem;
-  border: 0.1rem solid #ccc;
   padding: 0.75rem 1.25rem;
   width: 100%;
   min-height: 15rem;
-}
+}*/
 /* End of Daily Goals */

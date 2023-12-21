@@ -1,27 +1,29 @@
 import React, { useState } from "react";
+import { v4 as uuid } from "uuid";
 import GoalItem from "../goal-item/goal-item";
 import TodoItem from "../todo-item/todo-item";
 import Tooltip from "../../../components/tooltip/tooltip";
 import NewItem from "../new-item/new-item";
-import "./weekly.css";
 import NewHabit from "../new-habit/new-habit";
 import HabitItem from "../habit-item/habit-item";
+import Notes from "../../../components/note-components/notes/notes";
+import "./weekly.css";
 
 function Weekly() {
   const [weeklyGoals, setWeeklyGoals] = useState([
-    { id: "03979fya8ivgaug", goal: "First Goal", completed: false },
-    { id: "03979fya8405297", goal: "Second Goal", completed: false },
+    { id: uuid(), goal: "First Goal", completed: false },
+    { id: uuid(), goal: "Second Goal", completed: false },
   ]);
   const [todoList, setTodoList] = useState([
-    { id: "03979f09897oh", todo: "First Todo", completed: false },
-    { id: "03979f0989iush", todo: "Second Todo", completed: false },
-    { id: "03979f0989374i", todo: "Third Todo", completed: false },
-    { id: "03979f098738ga", todo: "Fourth Todo", completed: false },
-    { id: "03979fuihfavu8", todo: "Fifth Todo", completed: false },
+    { id: uuid(), todo: "First Todo", completed: false },
+    { id: uuid(), todo: "Second Todo", completed: false },
+    { id: uuid(), todo: "Third Todo", completed: false },
+    { id: uuid(), todo: "Fourth Todo", completed: false },
+    { id: uuid(), todo: "Fifth Todo", completed: false },
   ]);
   const [habitsList, setHabitsList] = useState([
     {
-      id: "ius97r8qw6r97roh",
+      id: uuid(),
       habit: "First Habit",
       mon: false,
       tue: false,
@@ -43,19 +45,7 @@ function Weekly() {
   const [showHiddenHabit, setshowHiddenHabit] = useState(false);
   const [editItem, setEditItem] = useState(false);
   const [selectedItem, setSelectedItem] = useState("");
-
-  const createID = (length) => {
-    let result = "";
-    const characters =
-      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    const charactersLength = characters.length;
-    let counter = 0;
-    while (counter < length) {
-      result += characters.charAt(Math.floor(Math.random() * charactersLength));
-      counter += 1;
-    }
-    return result;
-  };
+  const [note, setNote] = useState("");
 
   /** Focus */
   const handleFocus = (e) => {
@@ -109,7 +99,7 @@ function Weekly() {
       } else {
         setWeeklyGoals([
           ...weeklyGoals,
-          { id: createID(10), goal: weekGoal, completed: false },
+          { id: uuid(), goal: weekGoal, completed: false },
         ]);
         setShowHiddenGoal(false);
         setWeekGoal("");
@@ -154,7 +144,7 @@ function Weekly() {
       } else {
         setTodoList([
           ...todoList,
-          { id: createID(10), todo: todo, completed: false },
+          { id: uuid(), todo: todo, completed: false },
         ]);
         setTodo("");
         setShowHiddenTodo(false);
@@ -217,7 +207,7 @@ function Weekly() {
         setHabitsList([
           ...habitsList,
           {
-            id: createID(10),
+            id: uuid(),
             habit: habit,
             mon: false,
             tue: false,
@@ -249,6 +239,11 @@ function Weekly() {
   const totalHabitGoal = (e) => {};
 
   /** End of Habit */
+
+  /** Daily Notes */
+  const saveNote = (note) => {};
+  const deleteNote = (note) => {};
+  /** End of Daily Notes */
 
   return (
     <>
@@ -467,44 +462,7 @@ function Weekly() {
             <span className="material-symbols-rounded">add</span>
           </div>
         </div>
-        <div className="daily-goals-section">
-          <div className="day-goals">
-            <p className="title">Mon</p>
-            <div className="goals-area">
-              <textarea name="mon-goal" id="mon-goal"></textarea>
-            </div>
-          </div>
-          <div className="day-goals">
-            <p className="title">Tue</p>
-            <div className="goals-area">
-              <textarea name="mon-goal" id="mon-goal"></textarea>
-            </div>
-          </div>
-          <div className="day-goals">
-            <p className="title">Wed</p>
-            <div className="goals-area">
-              <textarea name="mon-goal" id="mon-goal"></textarea>
-            </div>
-          </div>
-          <div className="day-goals">
-            <p className="title">Thu</p>
-            <div className="goals-area">
-              <textarea name="mon-goal" id="mon-goal"></textarea>
-            </div>
-          </div>
-          <div className="day-goals">
-            <p className="title">Fri</p>
-            <div className="goals-area">
-              <textarea name="mon-goal" id="mon-goal"></textarea>
-            </div>
-          </div>
-          <div className="day-goals">
-            <p className="title">Weekend</p>
-            <div className="goals-area">
-              <textarea name="mon-goal" id="mon-goal"></textarea>
-            </div>
-          </div>
-        </div>
+        <Notes />
       </section>
     </>
   );
