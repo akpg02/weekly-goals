@@ -1,7 +1,7 @@
 import React from "react";
 import "./note.css";
 
-function Note({ id, day, deleteNote, text }) {
+function Note({ id, day, deleteNote, editNote, text }) {
   return (
     <div className="day-goals">
       <p className="title">{day || "Test"}</p>
@@ -9,13 +9,21 @@ function Note({ id, day, deleteNote, text }) {
         <div className="note-body" name={` ${day}-goal`} id={`${day}-goal`}>
           {text}
         </div>
-        <div className="day-goals-footer">
-          <span
-            className="material-symbols-rounded remove"
-            onClick={() => deleteNote(id)}
-          >
-            delete
-          </span>
+        <div className="day-goals-footer note">
+          <div className="options">
+            <span
+              className="material-symbols-rounded edit"
+              onClick={() => editNote(id)}
+            >
+              edit
+            </span>
+            <span
+              className="material-symbols-rounded remove"
+              onClick={() => deleteNote(id)}
+            >
+              delete
+            </span>
+          </div>
         </div>
       </div>
     </div>

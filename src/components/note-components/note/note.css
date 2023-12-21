@@ -26,14 +26,18 @@
   overflow-y: scroll;
 }
 
-.day-goals-footer {
+.day-goals-footer.note {
   display: flex;
   justify-content: flex-end;
-  width: 100%;
 }
 
 .day-goals-footer span.remove {
   color: #ad0707;
+  cursor: pointer;
+}
+
+.day-goals-footer .options .edit {
+  color: rgb(129, 129, 4);
   cursor: pointer;
 }
 /* End of Daily Goals */

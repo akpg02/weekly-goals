@@ -56,6 +56,8 @@ function Notes() {
     setNotes(filtered);
   };
 
+  const editNote = (id) => {};
+
   return (
     <div className="daily-goals-section">
       {notes.map((n) => (
@@ -65,6 +67,7 @@ function Notes() {
           day={n.day}
           text={n.text}
           deleteNote={deleteNote}
+          editNote={editNote}
         />
       ))}
       <CreateNote
