@@ -1,14 +1,14 @@
 import React from "react";
 import "./create-note.css";
 
-function CreateNote({ day, textHandler, saveHandler, inputText }) {
+function CreateNote({ id, day, textHandler, saveHandler, inputText }) {
   const charLimit = 300;
   const charLeft = charLimit - inputText.length;
 
   return (
     <div className="day-goals">
       <p className="title">{day || "Test"}</p>
-      <div className="goals-area">
+      <div className="notes-area">
         <textarea
           placeholder="Enter goals..."
           onChange={textHandler}
@@ -19,7 +19,7 @@ function CreateNote({ day, textHandler, saveHandler, inputText }) {
         ></textarea>
         <div className="day-goals-footer">
           <span className="charleft"> {charLeft} left </span>
-          <button className="save-goal" onClick={saveHandler}>
+          <button className="save-goal" onClick={() => saveHandler(id)}>
             Save
           </button>
         </div>

@@ -1,9 +1,12 @@
 /* Daily Goals */
-.goals-area {
+.notes-area {
   border: 0.1rem solid #ccc;
   border-bottom-left-radius: 0.5rem;
   border-bottom-right-radius: 0.5rem;
   padding: 1rem;
+}
+.goals-area {
+  border: none;
 }
 
 .day-goals .title {

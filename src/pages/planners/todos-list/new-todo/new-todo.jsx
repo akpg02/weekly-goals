@@ -1,7 +1,8 @@
 import React from "react";
-import "./new-item.css";
 
-function NewItem({ addToList, newItem, submit, edit = false }) {
+import "./new-todo.css";
+
+function NewTodo({ addToList, newItem, submit, edit = false }) {
   return (
     <div className="goal-item new-goal">
       <input value={newItem} onChange={addToList} type="text"></input>
@@ -18,4 +19,4 @@ function NewItem({ addToList, newItem, submit, edit = false }) {
   );
 }
 
-export default NewItem;
+export default NewTodo;

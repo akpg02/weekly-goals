@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import { v4 as uuid } from "uuid";
-import GoalItem from "../goal-item/goal-item";
-import TodoItem from "../todo-item/todo-item";
+
+import Todos from "../todos-list/todos/todos";
 import Tooltip from "../../../components/tooltip/tooltip";
-import NewItem from "../new-item/new-item";
-import NewHabit from "../new-habit/new-habit";
-import HabitItem from "../habit-item/habit-item";
-import Notes from "../../../components/note-components/notes/notes";
+import Notes from "../weekly-notes/notes/notes";
+import Habits from "../habits-list/habits/habits";
 import "./weekly.css";
+import Goals from "../goals-list/goals/goals";
 
 function Weekly() {
   const [weeklyGoals, setWeeklyGoals] = useState([
@@ -45,7 +44,6 @@ function Weekly() {
   const [showHiddenHabit, setshowHiddenHabit] = useState(false);
   const [editItem, setEditItem] = useState(false);
   const [selectedItem, setSelectedItem] = useState("");
-  const [note, setNote] = useState("");
 
   /** Focus */
   const handleFocus = (e) => {
@@ -240,11 +238,6 @@ function Weekly() {
 
   /** End of Habit */
 
-  /** Daily Notes */
-  const saveNote = (note) => {};
-  const deleteNote = (note) => {};
-  /** End of Daily Notes */
-
   return (
     <>
       <section className="weekly-goals">
@@ -279,48 +272,18 @@ function Weekly() {
                 <span className="material-symbols-rounded help">help</span>
               </Tooltip>
             </div>
-            <div className="goals-list-group">
-              <ol className="center">
-                {weeklyGoals &&
-                  weeklyGoals.map((g) => {
-                    if (editItem && selectedItem.id === g.id) {
-                      return (
-                        <li key={g.id}>
-                          <NewItem
-                            newItem={weekGoal}
-                            edit={editItem}
-                            addToList={addToWeekGoals}
-                            submit={() => submitWeekGoal(selectedItem.id)}
-                          />
-                        </li>
-                      );
-                    } else {
-                      return (
-                        <li key={g.id}>
-                          <GoalItem
-                            key={g.id}
-                            goal={g}
-                            completedGoal={() => completedGoal(g.id)}
-                            removeWeeklyGoal={removeWeeklyGoal}
-                            completed={g.completed}
-                            editGoal={editWeekGoal}
-                          />
-                        </li>
-                      );
-                    }
-                  })}
-                {showHiddenGoal && (
-                  <li>
-                    <NewItem
-                      addToList={addToWeekGoals}
-                      newItem={weekGoal}
-                      submit={submitWeekGoal}
-                      editItem={editItem}
-                    />
-                  </li>
-                )}
-              </ol>
-            </div>
+            <Goals
+              weeklyGoals={weeklyGoals}
+              editItem={editItem}
+              selectedItem={selectedItem}
+              weekGoal={weekGoal}
+              addToWeekGoals={addToWeekGoals}
+              submitWeekGoal={submitWeekGoal}
+              completedGoal={completedGoal}
+              removeWeeklyGoal={removeWeeklyGoal}
+              editWeekGoal={editWeekGoal}
+              showHiddenGoal={showHiddenGoal}
+            />
             <div className="plus" onClick={goalPlus}>
               <span className="material-symbols-rounded">add</span>
             </div>
@@ -336,48 +299,19 @@ function Weekly() {
                 <span className="material-symbols-rounded help">help</span>
               </Tooltip>
             </div>
-            <div className="todo-list-group">
-              <ul>
-                {todoList &&
-                  todoList.map((t) => {
-                    if (editItem && selectedItem.id === t.id) {
-                      return (
-                        <li key={t.id}>
-                          <NewItem
-                            newItem={todo}
-                            edit={editItem}
-                            addToList={addtoTodoList}
-                            submit={() => submitTodo(selectedItem.id)}
-                          />
-                        </li>
-                      );
-                    } else {
-                      return (
-                        <li key={t.id}>
-                          <TodoItem
-                            key={t.id}
-                            todo={t}
-                            removeTodo={removeTodo}
-                            completedTodo={() => completedTodo(t.id)}
-                            completed={t.completed}
-                            editTodo={editTodo}
-                          />
-                        </li>
-                      );
-                    }
-                  })}
-                {showHiddenTodo && (
-                  <li>
-                    <NewItem
-                      addToList={addTodo}
-                      newItem={todo}
-                      submit={submitTodo}
-                      editItem={editItem}
-                    />
-                  </li>
-                )}
-              </ul>
-            </div>
+            <Todos
+              todoList={todoList}
+              editItem={editItem}
+              selectedItem={selectedItem}
+              todo={todo}
+              addtoTodoList={addtoTodoList}
+              submitTodo={submitTodo}
+              removeTodo={removeTodo}
+              completedTodo={completedTodo}
+              editTodo={editTodo}
+              showHiddenTodo={showHiddenTodo}
+              addTodo={addTodo}
+            />
             <div className="plus" onClick={todoPlus}>
               <span className="material-symbols-rounded">add</span>
             </div>
@@ -386,6 +320,19 @@ function Weekly() {
         <div className="habit-tracker-section">
           <div className="help-wrapper">
             <span className="title">Habit Tracker</span>
+            <Habits
+              habitsList={habitsList}
+              editItem={editItem}
+              selectedItem={selectedItem}
+              habit={habit}
+              editHabit={editHabit}
+              removeHabit={removeHabit}
+              weekDayGoal={weekDayGoal}
+              addHabit={addHabit}
+              totalHabitGoal={totalHabitGoal}
+              showHiddenHabit={showHiddenHabit}
+              submitHabit={submitHabit}
+            />
             <Tooltip
               className="tooltip-icon"
               content="Write down the habits for each week. Use the check box as visual reminder."
@@ -394,70 +341,7 @@ function Weekly() {
               <span className="material-symbols-rounded help">help</span>
             </Tooltip>
           </div>
-          <table className="tracker-table">
-            <thead>
-              <tr>
-                <th>Habit</th>
-                <th>M</th>
-                <th>T</th>
-                <th>W</th>
-                <th>T</th>
-                <th>F</th>
-                <th>S</th>
-                <th>S</th>
-                <th>Achieved</th>
-                <th>Goal</th>
-              </tr>
-            </thead>
-            <tbody>
-              {habitsList &&
-                habitsList.map((h) => {
-                  if (editItem && selectedItem.id === h.id) {
-                    return (
-                      <tr key={h.id}>
-                        <NewHabit
-                          habit={selectedItem}
-                          newItem={habit}
-                          edit={editItem}
-                          addToList={addHabit}
-                          submit={() => submitHabit(selectedItem.id)}
-                        />
-                      </tr>
-                    );
-                  } else {
-                    return (
-                      <tr className="habit-row" key={h.id}>
-                        <HabitItem
-                          habit={h}
-                          editHabit={editHabit}
-                          removeHabit={removeHabit}
-                          weekDayGoal={weekDayGoal}
-                          totalGoal={totalHabitGoal}
-                        />
-                      </tr>
-                    );
-                  }
-                })}
-              {showHiddenHabit && (
-                <tr>
-                  <NewHabit
-                    habit={selectedItem}
-                    newItem={habit}
-                    edit={editItem}
-                    addToList={addHabit}
-                    submit={() => submitHabit(selectedItem.id)}
-                  />
-                </tr>
-              )}
-              <tr>
-                <td className="habit-totals" colSpan={8}>
-                  Total
-                </td>
-                <td></td>
-                <td></td>
-              </tr>
-            </tbody>
-          </table>
+
           <div className="plus" onClick={habitPlus}>
             <span className="material-symbols-rounded">add</span>
           </div>

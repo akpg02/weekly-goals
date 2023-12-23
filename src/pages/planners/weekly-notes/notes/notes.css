@@ -1,5 +1,9 @@
 .daily-goals-section {
+  max-width: 120rem;
+  width: 100%;
+  margin: auto;
   display: grid;
+  grid-auto-columns: 6.25rem;
   /*Define our columns */
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   grid-gap: 1em;

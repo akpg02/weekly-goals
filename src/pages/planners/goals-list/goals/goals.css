@@ -1,0 +1,51 @@
+/* Weekly goals */
+.goals-todo {
+  width: 100%;
+  display: flex;
+}
+
+.goals-list-group {
+  background-color: rgba(191, 213, 240, 0.4);
+  padding: 1rem 1rem 1rem 2rem;
+  width: 100%;
+  height: 30rem;
+  position: relative;
+  overflow-y: auto;
+}
+
+.goals-list-group ol li:not(:last-child) {
+  border-bottom: 1px solid #fff;
+  margin: 0.5rem 0;
+}
+
+.goals,
+.todo-list {
+  position: relative;
+}
+
+.goals .plus span {
+  float: right;
+  background: none;
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  font-size: 3.5rem;
+  color: rgb(34, 95, 22);
+  cursor: pointer;
+}
+
+
+.goals .remove,
+.todo-list .remove,
+.habit-row td .options .remove {
+  color: #ad0707;
+  cursor: pointer;
+}
+
+.goals .edit,
+.todo-list .edit,
+.habit-row td .options .edit {
+  color: rgb(129, 129, 4);
+  cursor: pointer;
+}
+/* End of Weekly goals */
