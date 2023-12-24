@@ -18,7 +18,7 @@ function PlannerWeek() {
   return (
     <>
       <Weekly today={today} week={weekNumber} />
-      {/* <Table /> */}
+    
     </>
   );
 }
