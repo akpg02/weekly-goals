@@ -1,0 +1,163 @@
+table.habit-table {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  margin: 20px 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+}
+
+table.habit-table caption {
+  font-size: 1.5em;
+  margin: 0.5em 0 0.75em;
+}
+
+table.habit-table tr {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 0.35em;
+  font-size: 1.3rem;
+}
+
+table.habit-table th,
+table.habit-table td {
+  padding: 0.625em;
+  text-align: center;
+}
+
+table.habit-table th {
+  font-size: 0.65em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background-color: rgba(191, 213, 240, 0.4);
+  border-bottom: 0.5rem double #ddd;
+}
+
+table.habit-table th:nth-child(1),
+table.habit-table td:nth-child(1) {
+  width: 40rem;
+}
+
+table.habit-table td:nth-child(1) {
+  display: flex;
+  justify-content: space-between;
+}
+
+table.habit-table td:nth-child(1) .options {
+  width: 8rem;
+}
+
+table.habit-table input[type="text"] {
+  width: 100%;
+  border: none;
+}
+
+table.habit-table input[type="number"] {
+  width: 60%;
+  border: none;
+  text-align: center;
+}
+
+table.habit-table span.remove {
+  color: #ad0707;
+  cursor: pointer;
+}
+
+table.habit-table button {
+  background-color: #05a067;
+  border: none;
+  color: #fff;
+  padding: 0.95rem 2rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1.2rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  border-radius: 0.3rem;
+  cursor: pointer;
+}
+
+table.habit-table td .options .edit {
+  color: rgb(129, 129, 4);
+  cursor: pointer;
+}
+
+@media screen and (max-width: 800px) {
+  table.habit-table {
+    border: 0;
+    margin: 3rem auto;
+  }
+
+  table.habit-table caption {
+    font-size: 1.3em;
+  }
+
+  table.habit-table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+
+  table.habit-table tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: 0.625em;
+  }
+
+  table.habit-table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: 0.8em;
+    text-align: right;
+  }
+
+  table.habit-table td::before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-aria-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  table.habit-table td:nth-child(1),
+  table.habit-table td:nth-child(8),
+  table.habit-table td:nth-child(9),
+  table.habit-table td:nth-child(10) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  table.habit-table td:nth-child(1) input {
+    width: 100%;
+    text-align: right;
+    padding: 0 1.2rem;
+  }
+
+  table.habit-table td:nth-child(9) input,
+  table.habit-table td:nth-child(10) input,
+  table.habit-table td:nth-child(11) input {
+    width: 6rem;
+    text-align: right;
+    border: none;
+  }
+
+  table.habit-table td input {
+    padding: 0 1.2rem;
+  }
+
+  table.habit-table td:last-child {
+    border-bottom: 0;
+  }
+}

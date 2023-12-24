@@ -1,6 +1,11 @@
+.habit-tracker-section {
+  margin: 5rem 0;
+}
+
 .help-wrapper {
   display: flex;
 }
+
 .help {
   font-size: 1.75rem;
   color: #a1a2af;
@@ -42,6 +47,10 @@
   letter-spacing: 0.1rem;
 }
 
+.habit-goal {
+  width: 100%;
+}
+
 .title {
   font-size: 1.6rem;
   font-weight: 300;
@@ -59,9 +68,77 @@
   text-decoration: strikethrough;
 }
 
+@media screen and (max-width: 1600px) {
+  .weekly-goals {
+    width: 85vw;
+  }
+}
 
+@media screen and (max-width: 1300px) {
+  .weekly-goals {
+    width: 100vw;
+  }
+}
 
+@media screen and (max-width: 850px) {
+  .goals-todo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
+  .goals {
+    width: 100%;
+  }
+
+  .todo-list {
+    margin: 3rem 0;
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+  }
+}
+
+/* @media only screen and (max-width: 760px),
+  (min-device-width: 768px) and (max-device-width: 1024px) {
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
+  }
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+  tr {
+    margin: 0 0 1rem 0;
+  }
+  td {
+    border: none;
+    border-bottom: 1px solid #ddd;
+    position: relative;
+    padding-left: 50%;
+  }
+  td:before {
+    position: absolute;
+    top: 0;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+  }
+  td:nth-of-type(1):before {
+    content: "Name";
+  }
+  td:nth-of-type(2):before {
+    content: "Email";
+  }
+}
+
+*/
 /* Daily Goals */
 
 /*.daily-goals-section {

@@ -1,8 +1,7 @@
 import React from "react";
-import NewHabit from "../new-habit/new-habit";
-import HabitItem from "../habit-item/habit-item";
-
 import "./habits.css";
+import NewHabit from "../habit-new/new-habit";
+import Habit from "../habit/habit";
 
 function Habits({
   habitsList,
@@ -18,19 +17,20 @@ function Habits({
   submitHabit,
 }) {
   return (
-    <table className="tracker-table">
+    <table className="habit-table">
       <thead>
         <tr>
-          <th>Habit</th>
-          <th>M</th>
-          <th>T</th>
-          <th>W</th>
-          <th>T</th>
-          <th>F</th>
-          <th>S</th>
-          <th>S</th>
-          <th>Achieved</th>
-          <th>Goal</th>
+          <th scope="col">Habit</th>
+          <th scope="col">M</th>
+          <th scope="col">T</th>
+          <th scope="col">W</th>
+          <th scope="col">T</th>
+          <th scope="col">F</th>
+          <th scope="col">S</th>
+          <th scope="col">S</th>
+          <th scope="col">ACHIEVED</th>
+          <th scope="col">GOAL</th>
+          {/* <th scope="col">TOTAL</th> */}
         </tr>
       </thead>
       <tbody>
@@ -50,8 +50,8 @@ function Habits({
               );
             } else {
               return (
-                <tr className="habit-row" key={h.id}>
-                  <HabitItem
+                <tr key={h.id}>
+                  <Habit
                     habit={h}
                     editHabit={editHabit}
                     removeHabit={removeHabit}
@@ -73,13 +73,6 @@ function Habits({
             />
           </tr>
         )}
-        <tr>
-          <td className="habit-totals" colSpan={8}>
-            Total
-          </td>
-          <td></td>
-          <td></td>
-        </tr>
       </tbody>
     </table>
   );

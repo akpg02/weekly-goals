@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { v4 as uuid } from "uuid";
 
 import Todos from "../todos-list/todos/todos";
-import Tooltip from "../../../components/tooltip/tooltip";
+import Tooltip from "../../tooltip/tooltip";
 import Notes from "../weekly-notes/notes/notes";
-import Habits from "../habits-list/habits/habits";
+import HabitsTable from "../habits-list/habits-table/habits";
 import "./weekly.css";
 import Goals from "../goals-list/goals/goals";
 
-function Weekly() {
+function Weekly({ week, today }) {
   const [weeklyGoals, setWeeklyGoals] = useState([
     { id: uuid(), goal: "First Goal", completed: false },
     { id: uuid(), goal: "Second Goal", completed: false },
@@ -31,7 +31,9 @@ function Weekly() {
       fri: true,
       sat: true,
       sun: false,
+      achieve: 0,
       goal: 4,
+      total: 10,
     },
   ]);
 
@@ -232,7 +234,9 @@ function Weekly() {
     setHabit(e.target.value);
   };
 
-  const weekDayGoal = (e) => {};
+  const weekDayGoal = (e) => {
+    console.log("this is e: ", e);
+  };
 
   const totalHabitGoal = (e) => {};
 
@@ -242,7 +246,9 @@ function Weekly() {
     <>
       <section className="weekly-goals">
         <div className="week-of-year">
-          <p>Week of: </p>
+          <p>
+            Week of: {today} - {week}{" "}
+          </p>
         </div>
         <div className="weekly-focus">
           <span className="goals title">Weekly Focus:</span>
@@ -319,20 +325,8 @@ function Weekly() {
         </div>
         <div className="habit-tracker-section">
           <div className="help-wrapper">
-            <span className="title">Habit Tracker</span>
-            <Habits
-              habitsList={habitsList}
-              editItem={editItem}
-              selectedItem={selectedItem}
-              habit={habit}
-              editHabit={editHabit}
-              removeHabit={removeHabit}
-              weekDayGoal={weekDayGoal}
-              addHabit={addHabit}
-              totalHabitGoal={totalHabitGoal}
-              showHiddenHabit={showHiddenHabit}
-              submitHabit={submitHabit}
-            />
+            <div className="title">Habit Tracker</div>
+
             <Tooltip
               className="tooltip-icon"
               content="Write down the habits for each week. Use the check box as visual reminder."
@@ -341,7 +335,19 @@ function Weekly() {
               <span className="material-symbols-rounded help">help</span>
             </Tooltip>
           </div>
-
+          <HabitsTable
+            habitsList={habitsList}
+            editItem={editItem}
+            selectedItem={selectedItem}
+            habit={habit}
+            editHabit={editHabit}
+            removeHabit={removeHabit}
+            weekDayGoal={weekDayGoal}
+            addHabit={addHabit}
+            totalHabitGoal={totalHabitGoal}
+            showHiddenHabit={showHiddenHabit}
+            submitHabit={submitHabit}
+          />
           <div className="plus" onClick={habitPlus}>
             <span className="material-symbols-rounded">add</span>
           </div>

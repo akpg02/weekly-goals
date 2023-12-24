@@ -1,0 +1,9 @@
+table.habit-table tr {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 0.35em;
+}
+
+table.habit-table td {
+  padding: 0.625em;
+}

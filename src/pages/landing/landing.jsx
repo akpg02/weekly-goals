@@ -1,11 +1,11 @@
 import React from "react";
 import "./landing.css";
-import Weekly from "../planners/weekly/weekly";
+import PlannerWeek from "../planner-week/planner-week";
 
 function Landing() {
   return (
     <div className="container">
-      <Weekly />
+      <PlannerWeek />
     </div>
   );
 }
