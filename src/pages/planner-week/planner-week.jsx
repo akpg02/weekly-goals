@@ -1,11 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import moment from "moment";
 
 import Weekly from "../../components/planner-sections/weekly/weekly";
 
 function PlannerWeek() {
-  const [weekNumber] = useState(moment().format("w"));
-  const [today] = useState(moment().startOf("week").format("MM/DD/YYYY"));
+  const [weekNumber, setWeekNumber] = useState("");
+  const [today, setToday] = useState("");
+
+  useEffect(() => {
+    const weekNum = moment().format("w");
+    setWeekNumber(weekNum);
+
+    const getToday = moment().startOf("week").format("MM/DD/YYYY");
+    setToday(getToday);
+  }, []);
 
   return (
     <>
